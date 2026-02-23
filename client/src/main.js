@@ -1,0 +1,21 @@
+import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import './style.css'
+import App from './App.vue'
+import Home from './views/Home.vue'
+import Lesson from './views/Lesson.vue'
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/lesson/:courseId/:lessonId', component: Lesson }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+  scrollBehavior() {
+    return { top: 0, behavior: 'smooth' }
+  }
+})
+
+createApp(App).use(router).mount('#app')

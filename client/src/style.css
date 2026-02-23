@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  /* Ink scale */
+  --ink: #1d1d1f;
+  --ink-secondary: #6e6e73;
+  --ink-tertiary: #aeaeb2;
+  --ink-light: #d2d2d7;
+
+  /* Paper / surface */
+  --surface: #f8f7f4;
+  --surface-secondary: #f2f1ec;
+  --surface-tertiary: #e6e4df;
+  --paper: #fffef9;
+  --paper-line: #ece9e0;
+  --paper-shadow: rgba(0, 0, 0, 0.06);
+
+  /* Accent */
+  --accent: #0071e3;
+
+  /* Glass */
+  --glass-bg: rgba(255, 254, 249, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-blur: 20px;
+
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--surface);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-tertiary);
+}
+
+@theme {
+  --color-ink: #1d1d1f;
+  --color-ink-secondary: #6e6e73;
+  --color-ink-tertiary: #aeaeb2;
+  --color-ink-light: #d2d2d7;
+  --color-surface: #f8f7f4;
+  --color-surface-secondary: #f2f1ec;
+  --color-surface-tertiary: #e6e4df;
+  --color-paper: #fffef9;
+  --color-paper-line: #ece9e0;
+  --color-accent: #0071e3;
+}
+
+/* ─── Glass Utility ─── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+/* ─── Paper Card ─── */
+.paper {
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 3px var(--paper-shadow),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+/* Notebook ruled lines background */
+.paper-ruled {
+  background-image:
+    linear-gradient(var(--paper) 0%, var(--paper) 100%),
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      var(--paper-line) 27px,
+      var(--paper-line) 28px
+    );
+  background-size: 100% 100%, 100% 100%;
+}
+
+/* Page edge shadow — stacked paper look */
+.paper-stack {
+  position: relative;
+}
+
+.paper-stack::before,
+.paper-stack::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: -3px;
+  height: 6px;
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 0 0 12px 12px;
+  z-index: -1;
+}
+
+.paper-stack::after {
+  left: 8px;
+  right: 8px;
+  bottom: -6px;
+  opacity: 0.6;
+}
+
+/* ─── Animations ─── */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Swiper Pagination Bullets ─── */
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}

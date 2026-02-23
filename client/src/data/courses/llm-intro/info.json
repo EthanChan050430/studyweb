@@ -1,0 +1,13 @@
+{
+    "id": "llm-intro",
+    "title": "大模型入门：从零构建智能应用",
+    "category": "ai",
+    "image": "/images/llm-course-cover.png",
+    "lessons": [
+        {
+            "id": "rag-intro",
+            "title": "3-2：构建私有大脑 - RAG 知识库",
+            "path": "rag.md"
+        }
+    ]
+}
